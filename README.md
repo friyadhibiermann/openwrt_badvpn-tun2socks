@@ -7,6 +7,6 @@
 <li>badvpn-tun2socks</li>
 <li>badvpn-udpgw</li>
 <li>badvpn-tunctl</li>
-<li>badvpn-ncs</li>
+<li>badvpn-ncd-request</li>
 </ul>
 </pre>
