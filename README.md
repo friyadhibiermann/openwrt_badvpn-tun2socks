@@ -12,6 +12,5 @@ SUPPORT :
 <li>badvpn-udpgw</li>
 <li>badvpn-tunctl</li>
 <li>badvpn-ncd</li>
-<li>badvpn-ncd-request</li>
 </ul>
 </pre>
