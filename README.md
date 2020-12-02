@@ -14,3 +14,9 @@ SUPPORT :
 <li>badvpn-ncd</li>
 </ul>
 </pre>
+
+referensi:
+<ul>
+  <li><p>https://github.com/ambrop72/badvpn/wiki/Tun2socks</p></li>
+  <li><p>https://code.google.com/archive/p/badvpn/downloads</p></li>
+</ul>
