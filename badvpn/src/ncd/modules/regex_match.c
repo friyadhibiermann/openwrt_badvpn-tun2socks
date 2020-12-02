@@ -142,7 +142,7 @@ static void func_new (void *vo, NCDModuleInst *i, const struct NCDModuleInst_new
     // execute match
     o->matches[0].rm_so = 0;
     o->matches[0].rm_eo = o->input_len;
-    o->succeeded = (regexec(&preg, o->input, MAX_MATCHES, o->matches, REG_STARTEND) == 0);
+    o->succeeded = (regexec(&preg, o->input, MAX_MATCHES, o->matches, REG_EPAREN) == 0);
     
     // free regex
     regfree(&preg);
@@ -266,7 +266,7 @@ static void replace_func_new (void *vo, NCDModuleInst *i, const struct NCDModule
             regmatch_t this_match;
             this_match.rm_so = 0;
             this_match.rm_eo = in_len - in_pos;
-            if (regexec(&regs[j], in + in_pos, 1, &this_match, REG_STARTEND) == 0 && (!have_match || this_match.rm_so < match.rm_so)) {
+            if (regexec(&regs[j], in + in_pos, 1, &this_match, REG_EPAREN) == 0 && (!have_match || this_match.rm_so < match.rm_so)) {
                 have_match = 1;
                 match_regex = j;
                 match = this_match;

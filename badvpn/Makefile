@@ -16,7 +16,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/$(PKG_NAME)
 	SECTION:=net
 	CATEGORY:=Network
-	DEPENDS:=+librt +libpthread +libopenssl +coreutils +coreutils-stdbuf
+	DEPENDS:=+librt +libpthread +libudev-fbsd +libnss +nss-utils +libopenssl +coreutils +coreutils-stdbuf +openssl-util
 	TITLE:=BadVPN
 	SUBMENU:=VPN
 endef
@@ -43,6 +43,9 @@ define Build/Configure
 		-DBUILD_TUN2SOCKS=1 \
 		-DBUILD_UDPGW=1 \
 		-DBUILD_TUNCTL=1 \
+		-DBUILD_CLIENT=1 \
+		-DBUILD_SERVER=1 \
+		-DBUILD_NCD=1 \
 	);
 endef
 
@@ -52,9 +55,9 @@ endef
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/server/badvpn-server $(1)/usr/bin/badvpn-server
-	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/client/badvpn-client $(1)/usr/bin/badvpn-client
-	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/ncd/badvpn-ncd $(1)/usr/bin/badvpn-ncd
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/server/badvpn-server $(1)/usr/bin/badvpn-server
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/client/badvpn-client $(1)/usr/bin/badvpn-client
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ncd/badvpn-ncd $(1)/usr/bin/badvpn-ncd
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/tunctl/badvpn-tunctl $(1)/usr/bin/badvpn-tunctl
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/tun2socks/badvpn-tun2socks $(1)/usr/bin/badvpn-tun2socks
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/udpgw/badvpn-udpgw $(1)/usr/bin/badvpn-udpgw
