@@ -1,4 +1,4 @@
-# openwrt_badvpn-tun2socks
+# openwrt_badvpn
 <h4>support :</h4>
 <pre>
 <ul>
